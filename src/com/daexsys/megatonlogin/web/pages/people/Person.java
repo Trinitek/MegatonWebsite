@@ -11,6 +11,8 @@ import java.util.Locale;
 public class Person {
     private String username;
 
+    private String aboutMe;
+
     private int profilePageviews = 0;
 
     private long timeLastActive;
@@ -140,5 +142,13 @@ public class Person {
 
     public List<Person> getFriends() {
         return friends;
+    }
+
+    public String aboutMe() {
+        if(getUsername().equalsIgnoreCase("Cactose")) {
+            return "My name is Matt Hebert. I'm a software developer from New Hampshire. I created Megaton and this website.<p><a href='https://twitter.com/Cactose'>tweedelee</a>";
+        } else {
+            return "Unknown.";
+        }
     }
 }

@@ -29,9 +29,9 @@ public class ProfilePage implements HttpHandler {
                     "</center>" +
                    person.getIconTag() + "<font size = '6'>" + name + "</font> - " + person.getDescription() + " - " + person.getPrivilage() +
                     "<br> "+ getStats(person) +
-                    "<hr>" +
-                    "<center>" + getAvatar(person) + "</center><hr>" +
-                    "<p>"+getFriendsList(person);
+                    "<hr>" + getDescriptionModule(person) +
+                    "<hr>" + getAvatarModule(person) +
+                    "<p>"+ getFriendsModule(person);
 
         } else {
             person.pageView();
@@ -40,9 +40,9 @@ public class ProfilePage implements HttpHandler {
                     "</center>" +
                     person.getIconTag() + "<font size = '6'>" + name + "</font> - " + person.getDescription() + " - " + person.getPrivilage() +
                     "<br> "+ getStats(person) +
-                    "<hr>" +
-                    "<center>" + getAvatar(person) + "</center><hr>" +
-                    "<p>" + getFriendsList(person);
+                    "<hr>" + getDescriptionModule(person) +
+                    getAvatarModule(person) +
+                    "<p>" + getFriendsModule(person);
 
             if(!requester.isFriend(person)) {
                 // Add as a friend button
@@ -69,8 +69,16 @@ public class ProfilePage implements HttpHandler {
         return ret;
     }
 
-    public String getFriendsList(Person person) {
-        String response = "<b>Friends:</b><br>";
+    public String getDescriptionModule(Person person) {
+        String response = "<font size = '5'><b>About:</b></font><br>";
+
+        response += person.aboutMe();
+
+        return response + "<hr>";
+    }
+
+    public String getFriendsModule(Person person) {
+        String response = "<font size = '5'><b>Friends:</b></font><br>";
 
         if(person.getFriends().size() == 0) {
             response += "This person has no friends added!<br>";
@@ -82,6 +90,10 @@ public class ProfilePage implements HttpHandler {
             }
         }
         return response;
+    }
+
+    public String getAvatarModule(Person person) {
+        return "</center><font size = '5'><b>Avatar:</b></font><br><center>" + getAvatar(person) + "</center><hr>";
     }
 
     public String getAvatar(Person person) {

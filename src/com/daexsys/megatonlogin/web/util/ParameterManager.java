@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParameterManager {
-    private Map<String, String> paramet = new HashMap<String, String>();
+    private Map<String, String> params = new HashMap<String, String>();
 
     public ParameterManager(String url) {
         System.out.println(url);
@@ -19,11 +19,11 @@ public class ParameterManager {
             String key = pair[0];
             String value = pair[1];
 
-            paramet.put(key, value);
+            this.params.put(key, value);
         }
     }
 
     public String getValue(String key) {
-        return paramet.get(key);
+        return params.get(key);
     }
 }
